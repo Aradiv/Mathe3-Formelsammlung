@@ -1,5 +1,1 @@
-Gerade 100% zu faul für ein Readme
-
-Nutzung auf eigene Gefahr Fehler gerne über Discord melden.
-
-[Hier gehts zum PDF](main.pdf)
+Fork um Rechtschreibfehler zu fixen, und meine eigenen Sachen für mich zu ergänzen:

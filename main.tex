@@ -119,6 +119,8 @@
        \end{figure}
        Die Oberste Zeile ab dem Strich sind dann die $\gamma_i$
        
+       Hinweis: Man kann Zeilen vertauschen. Das heißt wenn viele $f_{[x]} = 0$ lohnt es sich meist diese nach oben zu tauschen. 
+       
        \subsubsection{Fehlerabschätzung}
        \setcounter{satz}{2}
        \begin{satz}
@@ -140,8 +142,14 @@
        Sei $f:[a,b] \rightarrow \mathbb{R}$ bijektiv.
        Sind dann alle $(x_i,y_i), y_i = f(x_i)$ Stützpunkte von $f$
        dann sind $(y_i, x_i)$ Stützpunkte für $f^{-1}$ und eine Approximation kann durch Interpolation dieser
-       gewonnen werden
-       \newpage
+       gewonnen werden.
+       
+       
+       Hinweis:\\
+       $f$ ist auf Wertebereich von $x$ stetig differenzierbar und aufgrund der Ableitung streng monoton wachsend $\Rightarrow$ injektiv\\
+       Die Grenzen von x müssen genau  auf die Grenzen von y abbilden, da dann (wegen monoton wachsend) die gesamte Zielmenge getroffen wird $\Rightarrow$ surjektiv\\
+       $\Rightarrow$ bijektiv
+       
        \subsection{Spline-Interpolation}
             \begin{definition}
                 Eine Splinefunktion der Ordnung $k$ zur Zerlegung $\Delta$ ist eine Funktion $s:[a,b]\rightarrow \mathbb{R}$ mit folgenden Eigenschaften:
@@ -230,7 +238,7 @@
                     b_n
                 \end{pmatrix}
             \end{equation*}
-            \newpage
+            
             \setcounter{satz}{5}
             \begin{satz}{Fehler Natürlich}
                 \begin{align*}
@@ -255,6 +263,7 @@
             \textbf{Allgemeiner Fehler}
             \begin{equation*}
                 \int_a^b \left\| f(x)  - p_n(x) \right\| dx \leq \dfrac{\left\| f^{(n+1)}(\xi)\right\|}{(n+1)!}(b-a)^{n+2}
+                = \max_{x \in [a,b] } \dfrac{ | f^{(n+1)}(x)| }{(n+1)!}(b-a)^{n+2}
             \end{equation*}
             \textbf{Berechnung}
             \begin{align*}
@@ -321,6 +330,8 @@
 
 \section{Numerische Behandlung von Anfangswertproblemen gewöhnlicher Differentialgleichungen}
     \subsection{Einführung}
+            $t_j$ sind die Stützpunkte. Also untere Grenze + Schrittweite ($a + j*h$)\\
+            $y'(t) = f(t,y(t))$
         \subsubsection{Verfahren}
             \textbf{Expliziter Euler}
             \begin{align*}
@@ -932,7 +943,7 @@
                 \end{equation*}
                 \textbf{Empirische Streuung:}
                 \begin{equation*}
-                    s = \sqrt{s^2} \text{ ...duhhhhh}
+                    s = \sqrt{s^2}
                 \end{equation*}
                 \textbf{Spannweite:}
                 \begin{equation*}
@@ -949,7 +960,8 @@
                 \end{align*}
                 \textbf{Empirische Varianz}:
                 \begin{align*}
-                    s_x^2 &= \dfrac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2 & s_y^2 &= \dfrac{1}{n-1}\sum_{i=1}^n (y_i - \bar{y})^2
+                    s_x^2 &= \dfrac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2 & s_y^2 &= \dfrac{1}{n-1}\sum_{i=1}^n (y_i - \bar{y})^2\\
+                     &= \dfrac{1}{n-1} \left( \sum_{i=1}^n \left(x_i^2\right) - n\bar{x}^2 \right) & &= \dfrac{1}{n-1} \left( \sum_{i=1}^n \left(y_i^2\right) - n\bar{y}^2 \right)
                 \end{align*}
                 \textbf{Empirische Streuung:}
                 \begin{align*}
@@ -957,7 +969,8 @@
                 \end{align*}
                 \textbf{Empirische Kovarianz}
                 \begin{equation*}
-                    s_{xy}= \dfrac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})
+                    s_{xy}= \dfrac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})\\
+                    s_{xy}= \dfrac{1}{n-1} \left( \sum_{i=1}^n \left(x_i y_i\right) - n \bar{x} \bar{y} \right)
                 \end{equation*}
                 \textbf{Empirischer Korrelationskoeffizient}
                 \begin{equation*}
@@ -994,7 +1007,7 @@
                         \item Das aus zwei Ereignissen A und B zusammengesetzte Ereignis $A\cup B$ tritt ein, falls ein Ergebnis
                         $\omega: \omega \in A \vee \omega \in B$ beobachtet wird
                         \item Das Ereignis $A \cap B$ tritt ein, falls ein Ergebnis
-                        $\omega: \omega \in A \wedge \omega \in B$ beobachtet wird
+                        $\omega: \omega \in A \wedge \omega \in B$ beobachtet wird  (A und B wird gleichzeitig beobachtet)
                         \item $A^c = \Omega \backslash A$ heißt zu A komplementäres Ereignis
                         \item Zwei Ereignisse A und B heißen unvereinbar, falls $A\cap B = \emptyset$
                         \item $\emptyset$ heißt unmögliches Ereignis und $\Omega$ sicheres Ereignis
@@ -1062,7 +1075,7 @@
                 \end{equation*}
                 \textbf{Formel von Bayes}
                 \begin{equation*}
-                    P(A_i|B) = \dfrac{P(A_i)P(B|A_i)}{\sum_{k=1}^n P(A_k)P(B|A_k)}
+                    P(A_i|B) = \dfrac{P(A_i)P(B|A_i)}{\sum_{k=1}^n P(A_k)P(B|A_k)} = \dfrac{P(A_i)P(B|A_i)}{P(B)}
                 \end{equation*}
                 \textbf{Multiplikationsformel}
                 \begin{equation*}
@@ -1192,15 +1205,15 @@
                     \end{equation*}
                     $E(X) = \dfrac{1}{\lambda}$
                 \subsubsection*{Normalverteilung}
-                    Es seien $\mu \in \mathbb{R}$(Erwartungswert) und $\sigma > 0$(Standardabweichung). ($\sigma^2$ = Varianz) \\Eine Stetig verteilte Zufallsvariable mit der Dichte
+                    Es seien $\mu \in \mathbb{R}$ (Erwartungswert) und $\sigma > 0$ (Standardabweichung). ($\sigma^2$ = Varianz) \\Eine Stetig verteilte Zufallsvariable mit der Dichte
                     \begin{equation*}
                         f(t)= \dfrac{1}{\sigma \sqrt{2 \pi}}e^{-\frac{1}{2}(\frac{t- \mu}{\sigma})^2}\mbox{, }t \in \mathbb{R}
                     \end{equation*}
                     heißt normalverteilt mit Parameter $\mu$ und $\sigma^2$ kurz: $N(\mu, \sigma^2)$.
                     Im Falle $\mu = 0$, $\sigma^2 =1$ spricht man von einer Standard-Normalverteilung mit der Verteilungsfunktion
-                    \begin{equation*}
-                        \Phi(x) = \frac{1}{\sqrt{2 \pi}}\int_{-\infty}^x e^{-t^2/2}\mbox{, } x \geq 0
-                    \end{equation*}
+                    \begin{align*}
+                        \Phi(x) &= \frac{1}{\sqrt{2 \pi}}\int_{-\infty}^x e^{-t^2/2}\mbox{, } x \geq 0 & \Phi(x) &= P(X \leq x)
+                    \end{align*}
                     (Kann aus Tabelle Entnommen werden)\\
                     Es gilt:
                     \begin{align*}
@@ -1215,7 +1228,7 @@
             \begin{equation*}
                 E(X) = \sum_i x_i P(X=x_i)
             \end{equation*}
-            Erwartungswert von X falls $\Sigma_i |x_i| P(X=x_i) < \infty$\\
+            Erwartungswert von X falls $\Sigma_i |x_i| P(X=x_i) < \infty$. Enspricht arithmetischem Mittel, wenn Warscheinlichkeit für alle $x_i$ gleich ist\\
             Ist X eine stetig verteilte Zufallsvariable mit Dichte $f$ so heißt
             \begin{equation*}
                 E(X) = \int_{-\infty}^\infty x f(x) dx 
@@ -1398,7 +1411,8 @@
                     \item $\bar{X}_{(n)} $ und $S^2_{(n)}$ sind unabhängig
                     \item $\sqrt{n}\frac{\bar{X}_{(n)}- \mu}{\sqrt{S^2_{(n)}}}$ ist $t_{n-1}$-verteilt
                 \end{itemize}
-            \end{satz}\newpage
+            \end{satz}
+            %\newpage
     \section{Schätzverfahren und Konfidenzintervalle}
         \subsection{Grundlagen zu Schätzverfahren}
             \setcounter{satz}{1}
@@ -1459,7 +1473,7 @@
             \end{satz}
             \begin{satz}
                 Ist $T_1,T_2,\dots$ eine Folge von Schätzern, die konsistent im quadratischen Mittel für $\tau$ ist,
-                dann ist die Folge von Schätzern konsistent für $tau$
+                dann ist die Folge von Schätzern konsistent für $\tau$
             \end{satz}
         \subsection{Maximum-Likelihood-Schätzer}
             Bei gegebener Verteilungsklasse $F_\theta, \theta \in \Theta$,
@@ -1495,6 +1509,26 @@
                 \end{equation*}
                 Maximum-Likelihood-Schätzer.
             \end{definition}
+            \subsubsection{Kochrezept für Berechnung}
+                $f_\theta(x)$ entspricht der Dichtefunktion. Bei diskreten Werten siehe oben.
+                \begin{align*}
+                    L(\theta; x_1, \dots x_n) &= f_\theta(x_1)f_\theta(x_2)\dots f_\theta(x_n)\\
+                    ln\left( L(\theta; x_1, \dots x_n) \right) &= \sum_{i=1}^{n}ln\left( f_\theta(x_i) \right)
+                \end{align*}
+                    Teilweise kann man $f_\theta$ durch den $ln$ nochmal in Summen aufteilen, da dann alle Summanden ohne $\theta$ bei der Ableitung rausfliegen.
+                \begin{equation*}
+                    \frac{\partial}{\partial \theta} ln\left( L(\theta; x_1, \dots x_n) \right) = 
+                    \frac{\partial}{\partial \theta} \sum_{i=1}^{n}ln\left( f_\theta(x_i) \right) \overset{!}{=} 0
+                \end{equation*}
+                Nun nach $\theta$ umstellen. Dies ist dann die eindeutige Nullstelle
+                \begin{equation*}
+                    \hat{\theta}(x_1, \dots, x_n) = ...
+                \end{equation*}
+                Um zu wissen, dass es ein Maximum ist, muss man noch schauen ob die 2. Ableitung $<0$ ist
+                \begin{equation*}
+                    \frac{\partial^2}{\partial \theta^2} ln\left( L(\theta; x_1, \dots x_n) \right) \overset{!}{<} 0
+                \end{equation*}
+                \newpage
         \subsection{Konfidenzintervalle}
             \begin{definition}
                 Sei $0 < \alpha < 1$. Das zufällige Intervall $I(X_1, \dots, X_n)$ heißt Konfidenzintervall für $\tau(\theta)$ zum Konfidenzniveau $1-\alpha$, falls gilt 

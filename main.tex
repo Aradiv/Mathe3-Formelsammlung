@@ -484,7 +484,7 @@
                     \hline\\[-\normalbaselineskip]
                     & \beta_1 & \beta_2 & \dots & \beta_{r-1} & \beta_{r}
                 \end{array}\\
-                u_j+1 &= (1+ q\beta^T (I - qA)^{-1}\mathbf{1})u_j\\
+                u_{j+1} &= (1+ q\beta^T (I - qA)^{-1}\mathbf{1})u_j\\
                 R(q) &= 1 + q\beta^T(I-qA)^{-1}\mathbf{1}= \dfrac{\det(I-qA+q\mathbf{1}\beta^T)}{\det(I-qA)}
             \end{align*}
             \newpage
@@ -636,8 +636,8 @@
                 \textbf{Beispiele hierfür sind}:
                 \begin{align*}
                     ||x||_2 &= \sqrt{x^Tx} & \text{induziert} &&||A||_2 &= \sqrt{\lambda_{max}(A^TA)}\\
-                    ||x||_1 &= \sum^n_{i=1}|x_i| & \text{induziert} && ||A||_1 &= \max_{j=1,\dots,n} \sum^n_{i=1} |a_{ij}| & \text{(Spaltensummennorm)}\\
-                    ||x||_\infty &= \max_{i=1,\dots,n}|x_i| & \text{induziert} && ||A||_\infty &= \max_{i=1,\dots,n} \sum^n_{j=1} |a_{ij}| & \text{(Zeilensummennorm)}\\
+                    ||x||_1 &= \sum^n_{i=1}|x_i| & \text{induziert} && ||A||_1 &= \max_{j=1,\dots,n} \sum^n_{i=1} |a_{ij}| & \text{(Spaltensummen Norm = ``größte'' Spalte)}\\
+                    ||x||_\infty &= \max_{i=1,\dots,n}|x_i| & \text{induziert} && ||A||_\infty &= \max_{i=1,\dots,n} \sum^n_{j=1} |a_{ij}| & \text{(Zeilensummen Norm = ``größte'' Zeile)}\\
                 \end{align*}
             \end{definition}
             \begin{definition}
@@ -817,12 +817,12 @@
                 \begin{definition}
                     für eine Matrix $B \in \mathbb{C}^{n \times n}$ ist die Vektoriteration gegeben durch
                     \begin{equation*}
-                        z^{(k+1)} = \dfrac{1}{||Bz_{(k)}||}Bz_{(k)}, \mbox{ mit }= 0,1, \dots
+                        z^{(k+1)} = \dfrac{1}{||Bz^{(k)}||}Bz^{(k)}, \mbox{ mit }= 0,1, \dots
                     \end{equation*}
-                    mit einem Startvektor $z^{(0)} \in C^n \backslash {0}$
+                    mit einem Startvektor $z^{(0)} \in C^n \backslash \{0\}$
                 \end{definition}
-                mit geigneter Wahl von B erhält man so Näherungen an einen Eigenvektor zu $\lambda$
-                Eine Eigenwertnäherung für $\lambda$ erhählt man dann durch den \textbf{Rayleighquotienten}
+                mit geeigneter Wahl von B erhält man so Näherungen an einen Eigenvektor $z^{(k)}$ zu Eigenwert $\lambda$.\\
+                Eine Eigenwertnäherung für $\lambda$ erhält man dann durch den \textbf{Rayleighquotienten}
                 \begin{equation*}
                     R(z^{(k)},B)=\dfrac{(z^{(k)})^HBz^{(k)}}{(z^{(k)})^Hz^{(k)}}
                 \end{equation*}
@@ -831,7 +831,7 @@
                     \begin{equation}
                         \lambda_1,\dots,\lambda_r, \mbox{ }|\lambda_r| > |\lambda_{r+1}| \geq \dots \geq|\lambda_n|
                     \end{equation}
-                    mit r < n. Falls der Startvektor $z^{(0)}$ einen Anteil in $\text{Eig}_B(\lambda_1)$ besitzt, gilf für die Vektoriteration
+                    mit r < n. Falls der Startvektor $z^{(0)}$ einen Anteil in $\text{Eig}_B(\lambda_1)$ besitzt, gilt für die Vektoriteration
                     \begin{equation*}
                         R(z^{(k)},B)=\dfrac{(z^{(k)})^HBz^{(k)}}{(z^{(k)})^Hz^{(k)}} = \lambda_1 + O(q^k) \text{ für } k \rightarrow \infty, \mbox{ } q=\dfrac{\lambda_{r+1}}{\lambda_1} < 1
                     \end{equation*}
@@ -842,11 +842,11 @@
                     wobei $x_1$ den Anteil von $z^{(0)}$ in $\text{Eig}_B(\lambda_1)$ Bezeichnet
                 \end{satz}
                 \newpage
-            \subsubsection{Die Vektoriteration nach v. Mieses unnd Wielandt}
-                Sei $A\in \mathbb{C^{n\times n}}$ gegeben \\
-                \textbf{Einfache Vektoriteration nach von Mises}\\
-                Erhält man durch die Wahl von B = A
-                \textbf{Inverse Vektoriteration von Wieland}
+            \subsubsection{Die Vektoriteration nach v. Mises und Wielandt}
+                Sei $A\in \mathbb{C}^{n\times n}$ gegeben \\
+                \textbf{Einfache Vektoriteration nach von Mises} \\
+                Erhält man durch die Wahl von B = A\\
+                \textbf{Inverse Vektoriteration von Wieland}\\
                 für $\mu \not = \lambda_j$ hat die Matrix $B=(A-\mu I)^{-1}$ die EWs
                 \begin{equation*}
                     \mu_i = \dfrac{1}{\lambda_i - \mu}
@@ -869,10 +869,50 @@
                     z^{(k)} &= \dfrac{|\lambda_j-\mu|^k}{(\lambda_j-\mu)^k}\dfrac{x_j}{||x_j||}+O(q^k)
                 \end{align*}
                 wobei $x_j$ den Anteil von $z^{(0)}$ in $\text{Eig}_A(\lambda_j) = \text{Eig}_{(A-\mu I)^{-1}}(1/(\lambda_j - \mu))$.
-                Ist A debei hermitisch, so erfüllt der Rayleigh-Quotient
+                Ist A dabei hermitisch, so erfüllt der Rayleigh-Quotient
                 \begin{equation*}
                     R(z^{(k)}, (A - \mu I)^{-1}) = \dfrac{(z^{(k)})^H\hat{z}^{(k+1)}}{(z^{(k)})^Hz^{(k)}} = \dfrac{1}{\lambda_i - \mu} + O(q^{2k})
                 \end{equation*}
+                \newpage
+                \subsubsection{Kochrezept}
+                    \textbf{Einfache Vektoriteration nach von Mises:}\\
+                    Wir setzen die zu Iterationsmatrix $B$ einfach gleich der gegebenen Matrix $A$
+                    \begin{equation*}
+                        B = A
+                    \end{equation*}
+                    Um die nächste Iteration von $z$ zu bekommen bedarf es nur dieser Formel, welche man die ganze so lange durchiteriert, bis man bei der gewünschen Zahl angekommen ist.
+                    \begin{equation*}
+                        z^{(k+1)} = \dfrac{1}{||Bz^{(k)}||}Bz^{(k)}
+                    \end{equation*}
+                    Um nun den Rayleigh-Quotienten von einem beliebigen $k$ (meistens wird das vorletzte benutzt) einfach alles in die Formel einsetzen.
+                    \begin{equation*}
+                        R(z^{(k)},B)=\dfrac{(z^{(k)})^H Bz^{(k)}}{(z^{(k)})^Hz^{(k)}}
+                    \end{equation*}
+                    Bei reellen Werten entspricht $(.)^H$ der Transponierten.\\
+                    \\
+                    \textbf{Inverse Vektoriteration von Wielandt:}\\
+                    Hier ist $B$ mit einem Shift $\mu$ verschoben, und das Ganze invertiert.
+                    \begin{equation*}
+                        B = (A-\mu I)^{-1}
+                    \end{equation*}
+                    \textbf{Achtung!} Dabei nicht die Inverse bestimmen, sondern über die DGL
+                    \begin{equation*}
+                        (A-\mu I)\hat{z}^{(k+1)} = z^{(k)}\\
+                    \end{equation*}
+                    $\hat{z}^{k+1}$ bestimmen und dann normieren zu 
+                    \begin{equation*}
+                        z^{(k+1)} = \dfrac{\hat{z}^{(k+1)}}{||\hat{z}^{(k+1)}||}
+                    \end{equation*}
+                    Um nun den Rayleigh-Quotienten von einem beliebigen $k$ (meistens wird das vorletzte benutzt) einfach alles in die Formel einsetzen.
+                    \begin{equation*}
+                        R(z^{(k)}, (A - \mu I)^{-1}) = \dfrac{(z^{(k)})^H\hat{z}^{(k+1)}}{(z^{(k)})^Hz^{(k)}}
+                    \end{equation*}
+                    Bei reellen Werten entspricht $(.)^H$ der Transponierten.\\
+                    Einen Eigenwert $\lambda_i$ (oder Schätzung) erhalten wir dann durch Umstellen von
+                    \begin{equation*}
+                        \mu_i = \dfrac{1}{\lambda_i - \mu}
+                    \end{equation*}
+                    Wobei $\mu_i$ dem Rayleigh-Quotienten entspricht.
         \subsection{Das QR-Verfahren}
         \begin{definition}
             Algorithmus QR-Verfahren\\
@@ -940,6 +980,7 @@
                 \textbf{Empirische Varianz oder empirische Stichprobenvarianz}:
                 \begin{equation*}
                     s^2 = \dfrac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2
+                    = \dfrac{1}{n-1} \left( \sum_{i=1}^n \left(x_i^2\right) - n\bar{x}^2 \right)
                 \end{equation*}
                 \textbf{Empirische Streuung:}
                 \begin{equation*}
@@ -1614,7 +1655,7 @@
                      \end{enumerate}
                 \subsubsection*{$\chi^2$-Streuungstest}
                     \begin{enumerate}
-                        \item $X_1,\dots,X_n$ unabhängig, identisch $N(\mu, \sigma^2)$-verteilt $\mu2$ unbekannt
+                        \item $X_1,\dots,X_n$ unabhängig, identisch $N(\mu, \sigma^2)$-verteilt $\mu$ unbekannt
                         \item a) $H_0: \sigma^2 = \sigma^2_0$, b) $H_0: \sigma^2 \leq \sigma^2_0$, c) $H_0: \sigma^2 \geq \sigma^2_0$
                         \item Testgröße
                         \begin{equation*}

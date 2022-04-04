@@ -614,6 +614,7 @@
             l_{ij} = \dfrac{a_{ij}-\Sigma_{k=1}^{j-1}l_{ik}l_{jk}}{l_{jj}}
         \end{equation*}
     \end{satz}
+    \newpage
     \subsection{Fehlerabschätzung und Rundungsfehlereinfluss}
         \subsubsection{Fehlerabschätztung für gestörte Gleichungssysteme}
             \begin{definition}
@@ -623,7 +624,7 @@
                     \item $||ax|| = |a|\mbox{ }||x||$ für alle $a \in \mathbb{R}$ und alle $x \in \mathbb{R}^n$
                     \item $||x+y|| \leq ||x|| + ||y||$ für alle $x,y \in \mathbb{R}^n$ (Dreiecksungleichung) 
                 \end{enumerate}
-            \end{definition}\newpage
+            \end{definition}
             \begin{definition}
                 Eine Vektornorm Induziert eine Matrixnorm, diese Haben die Eigenschaften
                 \begin{enumerate}[label=\alph*)]
@@ -644,7 +645,7 @@
                 Sei $A \in \mathbb{R}^{n\times n}$ invertierbar und sein $|| \cdot||$ eine induzierte Matrixnorm. Dann heißt die Zahl $cond(A) = ||A||\mbox{ }||A^{-1}||$ die Konditionszahl von A bezüglich der Matrixnorm
             \end{definition}
             \begin{satz}
-                (Störeinfluss von Matrix un rechter Seite). Sei $A \in \mathbb{R}^{n \times n}$ invertierbar, $b,\Delta b \in \mathbb{R}^n, b \not = 0$ und $\Delta A \in \mathbb{R}^{n \times n}$ mit $||\delta A|| < 1/ ||A^{-1}||$
+                (Störeinfluss von Matrix und rechter Seite). Sei $A \in \mathbb{R}^{n \times n}$ invertierbar, $b,\Delta b \in \mathbb{R}^n, b \not = 0$ und $\Delta A \in \mathbb{R}^{n \times n}$ mit $||\delta A|| < 1/ ||A^{-1}||$
                 mit einer beliebigen durch eine Norm $||\cdot||$ auf $\mathbb{R}^n$ induzierten Matrixnorm $||\cdot||$.
                 Ist $x$ die Lösung von
                 \begin{equation*}
@@ -800,6 +801,7 @@
                         \end{align*}
                         \item ist die Vereinigung $G_1$ von k Gershgorin-Kreisen disjunkt von der Vereinigung $G_2$ der restlichen n-k Gershgorin-Kreise, dann enthält $G_1$ genau k EWs und $G_2$ genau n-k EWs von A
                     \end{enumerate}
+                    Eine reelle Matrix (alle Elemente sind reelle Zahlen) hat nur reelle sowie komplex-konjugierte Paare von Eigenwerten. Wenn ein Gershgorin-Kreis nun nur einen Eigenwert beinhaltet, kann dieser daher auch nur reell sein.
                 \end{satz}
                 \begin{satz}
                     (Bauer/Fike). Es sei $A \in \mathbb{C}^{n \times n}$ diagonalisierbar,also
@@ -812,6 +814,7 @@
                     \end{equation*}
                     mit $\text{cond}_2(T):= ||T||_2||T^{-1}||_2$; $\text{cond}_2(T):= 1$ für A hermitisch 
                 \end{satz}
+                \newpage
         \subsection{Die Vektoriteration}
             \subsubsection{Definition und Eigenschaften der Vektoriteration}
                 \begin{definition}
@@ -841,7 +844,6 @@
                     \end{equation*}
                     wobei $x_1$ den Anteil von $z^{(0)}$ in $\text{Eig}_B(\lambda_1)$ Bezeichnet
                 \end{satz}
-                \newpage
             \subsubsection{Die Vektoriteration nach v. Mises und Wielandt}
                 Sei $A\in \mathbb{C}^{n\times n}$ gegeben \\
                 \textbf{Einfache Vektoriteration nach von Mises} \\
@@ -1036,6 +1038,7 @@
                     \item Für $r_{xy} < 0$ streng monoton steigende Gerade
                     \item Für $r_{xy} = 0$ horizontale Gerade
                 \end{itemize}
+                \newpage
         \subsection{Zufallsexperimente und Wahrscheinlichkeit}
             \subsubsection{Zufallsexperimente}
                 \begin{definition}
@@ -1351,6 +1354,7 @@
                         Var(X_1+\dots+X_n) = Var(X_1) + \dots + Var(X_n)
                     \end{equation*}
                 \end{satz}
+                \newpage
         \subsection{Gesetz der großen Zahlen, zentraler Grenzwertsatz}
             \subsubsection{Das schwache gesetz der großen Zahlen}
                 \begin{satz}
@@ -1569,7 +1573,7 @@
                 \begin{equation*}
                     \frac{\partial^2}{\partial \theta^2} ln\left( L(\theta; x_1, \dots x_n) \right) \overset{!}{<} 0
                 \end{equation*}
-                \newpage
+                %\newpage
         \subsection{Konfidenzintervalle}
             \begin{definition}
                 Sei $0 < \alpha < 1$. Das zufällige Intervall $I(X_1, \dots, X_n)$ heißt Konfidenzintervall für $\tau(\theta)$ zum Konfidenzniveau $1-\alpha$, falls gilt 

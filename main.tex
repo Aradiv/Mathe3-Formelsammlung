@@ -118,9 +118,9 @@
            \centering
        \end{figure}
        Die Oberste Zeile ab dem Strich sind dann die $\gamma_i$
-       
-       Hinweis: Man kann Zeilen vertauschen. Das heißt wenn viele $f_{[x]} = 0$ lohnt es sich meist diese nach oben zu tauschen. 
-       
+
+       Hinweis: Man kann Zeilen vertauschen. Das heißt wenn viele $f_{[x]} = 0$ lohnt es sich meist diese nach oben zu tauschen.
+
        \subsubsection{Fehlerabschätzung}
        \setcounter{satz}{2}
        \begin{satz}
@@ -143,13 +143,13 @@
        Sind dann alle $(x_i,y_i), y_i = f(x_i)$ Stützpunkte von $f$
        dann sind $(y_i, x_i)$ Stützpunkte für $f^{-1}$ und eine Approximation kann durch Interpolation dieser
        gewonnen werden.
-       
-       
+
+
        Hinweis:\\
        $f$ ist auf Wertebereich von $x$ stetig differenzierbar und aufgrund der Ableitung streng monoton wachsend $\Rightarrow$ injektiv\\
        Die Grenzen von x müssen genau  auf die Grenzen von y abbilden, da dann (wegen monoton wachsend) die gesamte Zielmenge getroffen wird $\Rightarrow$ surjektiv\\
        $\Rightarrow$ bijektiv
-       
+
        \subsection{Spline-Interpolation}
             \begin{definition}
                 Eine Splinefunktion der Ordnung $k$ zur Zerlegung $\Delta$ ist eine Funktion $s:[a,b]\rightarrow \mathbb{R}$ mit folgenden Eigenschaften:
@@ -212,7 +212,7 @@
             \begin{equation*}
                 \begin{matrix}
                     b_0 = \dfrac{y_1-y_0}{h_0} - f'(a) & b_n = f'(b) - \dfrac{y_n - y_{n-1}}{h_{n-1}} & & \\
-                    \lambda_0 =\dfrac{h_0}{6} & \mu_0 = \dfrac{h_0}{3} & \lambda_n = \dfrac{h_{n-1}}{6} & \mu_n = \dfrac{h_{n-1}}{3}\\ 
+                    \lambda_0 =\dfrac{h_0}{6} & \mu_0 = \dfrac{h_0}{3} & \lambda_n = \dfrac{h_{n-1}}{6} & \mu_n = \dfrac{h_{n-1}}{3}\\
                 \end{matrix}
             \end{equation*}
             \begin{equation*}
@@ -238,7 +238,7 @@
                     b_n
                 \end{pmatrix}
             \end{equation*}
-            
+            \newpage
             \setcounter{satz}{5}
             \begin{satz}{Fehler Natürlich}
                 \begin{align*}
@@ -347,7 +347,7 @@
             \end{align*}
             \textbf{Verfahren von Heun, erstes Runge-Kutta-Verfahren 2. Ordnung}
             \begin{align*}
-                u_{j+1} & := u_j + \frac{h}{2}(f(t_j, u_j) + f(t_{j+1} , u_j + hf(t_j, u_j))) 
+                u_{j+1} & := u_j + \frac{h}{2}(f(t_j, u_j) + f(t_{j+1} , u_j + hf(t_j, u_j)))
             \end{align*}
             kann man auch schreiben als:
             \begin{align*}
@@ -429,7 +429,7 @@
             \begin{equation*}
                 |u_{j+1}| \leq |u_j|, \mbox{    }\forall j \geq 0
             \end{equation*}
-            bei Einschrittverfahren gilt bei Anwendung auf das Modellproblem die Beziehung 
+            bei Einschrittverfahren gilt bei Anwendung auf das Modellproblem die Beziehung
             \begin{equation*}
                 u_{j+1} = R(q) u_j \mbox{ mit } q = \lambda h
             \end{equation*}
@@ -614,7 +614,6 @@
             l_{ij} = \dfrac{a_{ij}-\Sigma_{k=1}^{j-1}l_{ik}l_{jk}}{l_{jj}}
         \end{equation*}
     \end{satz}
-    \newpage
     \subsection{Fehlerabschätzung und Rundungsfehlereinfluss}
         \subsubsection{Fehlerabschätztung für gestörte Gleichungssysteme}
             \begin{definition}
@@ -624,7 +623,7 @@
                     \item $||ax|| = |a|\mbox{ }||x||$ für alle $a \in \mathbb{R}$ und alle $x \in \mathbb{R}^n$
                     \item $||x+y|| \leq ||x|| + ||y||$ für alle $x,y \in \mathbb{R}^n$ (Dreiecksungleichung) 
                 \end{enumerate}
-            \end{definition}
+            \end{definition}\newpage
             \begin{definition}
                 Eine Vektornorm Induziert eine Matrixnorm, diese Haben die Eigenschaften
                 \begin{enumerate}[label=\alph*)]
@@ -708,7 +707,7 @@
                 \end{satz}
             \subsubsection{Globalisierung des Newton-Verfahrens}
                 \textbf{Schrittweitenwahl nach Armijo}:\\
-                sei $\delta \in ]0, \frac{1}{2}[$ (z.B. $10^{-3}$) fest gegeben. 
+                sei $\delta \in ]0, \frac{1}{2}[$ (z.B. $10^{-3}$) fest gegeben.
                 Wähle das Größte $\sigma_k \in \{1, \frac{1}{2}, \frac{1}{4}, \dots\}$ mit 
                 \begin{equation*}
                     ||F(x^{(k)} + \sigma_k s^{(k)})||_2^2 \leq ||F(x^{(k)})||_2^2-2\delta \sigma_k ||F(x^{(k)})||_2^2
@@ -727,7 +726,7 @@
             \subsubsection{Grundlagen}
                 \begin{definition}
                     Eine Zahl $\lambda \in \mathbb{C}$ heißt Eigenwert einer Matrix $A \in \mathbb{C}^{n \times n}$,
-                    wenn es einen Vektor $x \in \mathbb{C}^n$ gibt mit 
+                    wenn es einen Vektor $x \in \mathbb{C}^n$ gibt mit
                     \begin{equation*}
                         Ax = \lambda x
                     \end{equation*}
@@ -901,7 +900,7 @@
                     \begin{equation*}
                         (A-\mu I)\hat{z}^{(k+1)} = z^{(k)}\\
                     \end{equation*}
-                    $\hat{z}^{k+1}$ bestimmen und dann normieren zu 
+                    $\hat{z}^{k+1}$ bestimmen und dann normieren zu
                     \begin{equation*}
                         z^{(k+1)} = \dfrac{\hat{z}^{(k+1)}}{||\hat{z}^{(k+1)}||}
                     \end{equation*}
@@ -1354,7 +1353,6 @@
                         Var(X_1+\dots+X_n) = Var(X_1) + \dots + Var(X_n)
                     \end{equation*}
                 \end{satz}
-                \newpage
         \subsection{Gesetz der großen Zahlen, zentraler Grenzwertsatz}
             \subsubsection{Das schwache gesetz der großen Zahlen}
                 \begin{satz}
@@ -1562,7 +1560,7 @@
                 \end{align*}
                     Teilweise kann man $f_\theta$ durch den $ln$ nochmal in Summen aufteilen, da dann alle Summanden ohne $\theta$ bei der Ableitung rausfliegen.
                 \begin{equation*}
-                    \frac{\partial}{\partial \theta} ln\left( L(\theta; x_1, \dots x_n) \right) = 
+                    \frac{\partial}{\partial \theta} ln\left( L(\theta; x_1, \dots x_n) \right) =
                     \frac{\partial}{\partial \theta} \sum_{i=1}^{n}ln\left( f_\theta(x_i) \right) \overset{!}{=} 0
                 \end{equation*}
                 Nun nach $\theta$ umstellen. Dies ist dann die eindeutige Nullstelle

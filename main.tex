@@ -904,46 +904,6 @@
                 \begin{equation*}
                     R(z^{(k)}, (A - \mu I)^{-1}) = \dfrac{(z^{(k)})^H\hat{z}^{(k+1)}}{(z^{(k)})^Hz^{(k)}} = \dfrac{1}{\lambda_i - \mu} + O(q^{2k})
                 \end{equation*}
-                \newpage
-                \subsubsection{Kochrezept}
-                    \textbf{Einfache Vektoriteration nach von Mises:}\\
-                    Wir setzen die zu Iterationsmatrix $B$ einfach gleich der gegebenen Matrix $A$
-                    \begin{equation*}
-                        B = A
-                    \end{equation*}
-                    Um die nächste Iteration von $z$ zu bekommen bedarf es nur dieser Formel, welche man die ganze so lange durchiteriert, bis man bei der gewünschen Zahl angekommen ist.
-                    \begin{equation*}
-                        z^{(k+1)} = \dfrac{1}{||Bz^{(k)}||}Bz^{(k)}
-                    \end{equation*}
-                    Um nun den Rayleigh-Quotienten von einem beliebigen $k$ (meistens wird das vorletzte benutzt) einfach alles in die Formel einsetzen.
-                    \begin{equation*}
-                        R(z^{(k)},B)=\dfrac{(z^{(k)})^H Bz^{(k)}}{(z^{(k)})^Hz^{(k)}}
-                    \end{equation*}
-                    Bei reellen Werten entspricht $(.)^H$ der Transponierten.\\
-                    \\
-                    \textbf{Inverse Vektoriteration von Wielandt:}\\
-                    Hier ist $B$ mit einem Shift $\mu$ verschoben, und das Ganze invertiert.
-                    \begin{equation*}
-                        B = (A-\mu I)^{-1}
-                    \end{equation*}
-                    \textbf{Achtung!} Dabei nicht die Inverse bestimmen, sondern über die DGL
-                    \begin{equation*}
-                        (A-\mu I)\hat{z}^{(k+1)} = z^{(k)}\\
-                    \end{equation*}
-                    $\hat{z}^{k+1}$ bestimmen und dann normieren zu
-                    \begin{equation*}
-                        z^{(k+1)} = \dfrac{\hat{z}^{(k+1)}}{||\hat{z}^{(k+1)}||}
-                    \end{equation*}
-                    Um nun den Rayleigh-Quotienten von einem beliebigen $k$ (meistens wird das vorletzte benutzt) einfach alles in die Formel einsetzen.
-                    \begin{equation*}
-                        R(z^{(k)}, (A - \mu I)^{-1}) = \dfrac{(z^{(k)})^H\hat{z}^{(k+1)}}{(z^{(k)})^Hz^{(k)}}
-                    \end{equation*}
-                    Bei reellen Werten entspricht $(.)^H$ der Transponierten.\\
-                    Einen Eigenwert $\lambda_i$ (oder Schätzung) erhalten wir dann durch Umstellen von
-                    \begin{equation*}
-                        \mu_i = \dfrac{1}{\lambda_i - \mu}
-                    \end{equation*}
-                    Wobei $\mu_i$ dem Rayleigh-Quotienten entspricht.
         \subsection{Das QR-Verfahren}
         \begin{definition}
             Algorithmus QR-Verfahren\\
@@ -1583,26 +1543,6 @@
                 \end{equation*}
                 Maximum-Likelihood-Schätzer.
             \end{definition}
-            \subsubsection{Kochrezept für Berechnung}
-                $f_\theta(x)$ entspricht der Dichtefunktion. Bei diskreten Werten siehe oben.
-                \begin{align*}
-                    L(\theta; x_1, \dots x_n) &= f_\theta(x_1)f_\theta(x_2)\dots f_\theta(x_n)\\
-                    ln\left( L(\theta; x_1, \dots x_n) \right) &= \sum_{i=1}^{n}ln\left( f_\theta(x_i) \right)
-                \end{align*}
-                    Teilweise kann man $f_\theta$ durch den $ln$ nochmal in Summen aufteilen, da dann alle Summanden ohne $\theta$ bei der Ableitung rausfliegen.
-                \begin{equation*}
-                    \frac{\partial}{\partial \theta} ln\left( L(\theta; x_1, \dots x_n) \right) =
-                    \frac{\partial}{\partial \theta} \sum_{i=1}^{n}ln\left( f_\theta(x_i) \right) \overset{!}{=} 0
-                \end{equation*}
-                Nun nach $\theta$ umstellen. Dies ist dann die eindeutige Nullstelle
-                \begin{equation*}
-                    \hat{\theta}(x_1, \dots, x_n) = ...
-                \end{equation*}
-                Um zu wissen, dass es ein Maximum ist, muss man noch schauen ob die 2. Ableitung $<0$ ist
-                \begin{equation*}
-                    \frac{\partial^2}{\partial \theta^2} ln\left( L(\theta; x_1, \dots x_n) \right) \overset{!}{<} 0
-                \end{equation*}
-                %\newpage
         \subsection{Konfidenzintervalle}
             \begin{definition}
                 Sei $0 < \alpha < 1$. Das zufällige Intervall $I(X_1, \dots, X_n)$ heißt Konfidenzintervall für $\tau(\theta)$ zum Konfidenzniveau $1-\alpha$, falls gilt 

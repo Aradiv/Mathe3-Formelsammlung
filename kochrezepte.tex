@@ -48,7 +48,7 @@ marginpar=false
 \usepackage[autostyle]{csquotes}
 
 \usepackage{amsmath}
-%\usepackage{amssymb}
+\usepackage{amssymb}
 \usepackage{tikz}
 \usetikzlibrary{tikzmark,calc}
 %\usepackage{graphicx}
@@ -109,7 +109,22 @@ marginpar=false
     \newpage
     \stepcounter{section}
     \stepcounter{section}
-    \stepcounter{section}
+    \section{Lineare Gleichungssysteme}
+        \stepcounter{subsection}
+        \stepcounter{subsection}
+        \subsection{Cholesky Verfahren\hspace{1em}($LL^T = A$)}
+            Für $j= 1,\dots ,n$
+            \begin{equation*}
+                l_{jj} =\sqrt{a_{jj}-\sum^{j-1}_{k=1}l_{jk}^2}
+            \end{equation*}
+            Falls Wurzel nicht existiert, STOPP $\Rightarrow A$ nicht definit\\
+            \\
+            \hspace{20mm} Für $i=j+1,\dots,n:$
+            \begin{equation*}
+                l_{ij} = \dfrac{a_{ij}-\Sigma_{k=1}^{j-1}l_{ik}l_{jk}}{l_{jj}}
+            \end{equation*}
+
+    \newpage
     \stepcounter{section}
     \section{Verfahren zur Eigenwert- und Eigenvektorberechnung}
         \stepcounter{subsection}

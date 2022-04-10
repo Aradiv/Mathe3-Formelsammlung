@@ -208,4 +208,45 @@ marginpar=false
                 \frac{\partial^2}{\partial \theta^2} ln\left( L(\theta; x_1, \dots x_n) \right) \overset{!}{<} 0
             \end{equation*}
     \newpage
+    \section{Tests}
+    %TODO add decision tree and maybe tests into table to compact them
+        \begin{enumerate}
+            \item $X_1,\dots,X_n$ unabhängig, identisch $N(\mu, \sigma^2)$-verteilt
+        \end{enumerate}
+        \subsubsection*{Gauß-Test , testen für $\mu$ bei bekannter Varianz $\sigma^2 = \sigma_0^2$}
+            \begin{enumerate}
+                \stepcounter{enumi}
+                \item a) $H_0: \mu = \mu_0$, b) $H_0: \mu \leq \mu_0$, c) $H_0: \mu \geq \mu_0$
+                \item Testgröße
+                \begin{equation*}
+                    T(X_1,\dots,X_n)=\dfrac{\sqrt{n}}{\sigma_0}(\bar{X}_{(n)}-\mu_0)
+                \end{equation*}
+                \item Ablehnung Falls\\
+                a) $|T| > u_{1-\alpha/2}$, b) $T > u_{1-\alpha}$, c) $T < u_{\alpha}$
+            \end{enumerate}
+        \subsubsection*{t-Test , testen für $\mu$ bei unbekannter Varianz $\sigma^2$}
+            \begin{enumerate}
+                \stepcounter{enumi}
+                \item a) $H_0: \mu = \mu_0$, b) $H_0: \mu \leq \mu_0$, c) $H_0: \mu \geq \mu_0$
+                \item Testgröße
+                \begin{equation*}
+                    T(X_1,\dots,X_n)=\sqrt{n}\dfrac{\bar{X}_{(n)}-\mu_0}{\sqrt{S_{(n)}^2}}
+                \end{equation*}
+                \item Ablehnung Falls\\
+                a) $|T| > t_{n-1;1-\alpha/2}$, b) $T > t_{n-1;1-\alpha}$, c) $T < t_{n-1;\alpha}$
+            \end{enumerate}
+        \subsubsection*{$\chi^2$-Streuungstest , testen für $\sigma^2$ bei unbekanntem Erwartungswert $\mu$}
+            \begin{enumerate}
+                \stepcounter{enumi}
+                \item a) $H_0: \sigma^2 = \sigma^2_0$, b) $H_0: \sigma^2 \leq \sigma^2_0$, c) $H_0: \sigma^2 \geq \sigma^2_0$
+                \item Testgröße
+                \begin{equation*}
+                    T(X_1,\dots,X_n)=\dfrac{(n-1)}{\sigma^2_0}S^2_{(n)}
+                \end{equation*}
+                \item Ablehnung falls\\
+                a) $T<\chi^2_{n-1;\alpha/2}$ oder $T>\chi^2_{n-1;1-\alpha/2}$,
+                b) $T>\chi^2_{n-1;1-\alpha}$,
+                c) $T<\chi^2_{n-1;\alpha}$
+            \end{enumerate}
+
 \end{document}

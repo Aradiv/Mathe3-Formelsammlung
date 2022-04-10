@@ -123,6 +123,23 @@ marginpar=false
             \begin{equation*}
                 l_{ij} = \dfrac{a_{ij}-\Sigma_{k=1}^{j-1}l_{ik}l_{jk}}{l_{jj}}
             \end{equation*}
+        \subsection{Fehlerabschätzung für gestörte Gleichungssysteme}
+            \begin{align*}
+                Ax = b && (A+ \Delta A)\tilde{x} = b + \Delta b
+            \end{align*}
+            dann gilt für den Fehler
+            \begin{equation*}
+                \dfrac{||\tilde{x} - x||}{||x||} \leq \dfrac{cond(A)}{1-cond(A)||\Delta A|| / ||A||} \left(\dfrac{||\Delta A||}{||A||} + \dfrac{|| \Delta b||}{||b||}\right)
+            \end{equation*}
+            mit
+            \begin{align*} %TODO convert to table or something
+                ||x||_2 &= \sqrt{x^Tx} & \text{induziert} &&||A||_2 &= \sqrt{\lambda_{max}(A^TA)}\\
+                ||x||_1 &= \sum^n_{i=1}|x_i| & \text{induziert} && ||A||_1 &= \max_{j=1,\dots,n} \sum^n_{i=1} |a_{ij}| & \text{(Spaltensummen Norm = ``größte'' Spalte)}\\
+                ||x||_\infty &= \max_{i=1,\dots,n}|x_i| & \text{induziert} && ||A||_\infty &= \max_{i=1,\dots,n} \sum^n_{j=1} |a_{ij}| & \text{(Zeilensummen Norm = ``größte'' Zeile)}\\
+            \end{align*}
+            \begin{equation*}
+                cond(A) = ||A||\mbox{ }||A^{-1}||
+            \end{equation*}
 
     \newpage
     \stepcounter{section}

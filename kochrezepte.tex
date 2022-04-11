@@ -331,7 +331,40 @@ marginpar=false
             \end{equation*}
 
     \newpage
-    \stepcounter{section}
+    \section{Nichtlineare Gleichungssysteme}
+        \stepcounter{subsection}
+        \stepcounter{subsection}
+            \subsubsection{lokales Newton-Verfahren}
+                \begin{align*}
+                    s^{(k)} \text{ Lösung von } J_F(x^{(k)})s^{(k)} &= - F(x^{(k)})\\
+                    x^{(k+1)} &= x^{(k)} + s^{(k)}
+                \end{align*}
+                Bei $f(x) : \mathbb{R}^1\rightarrow\mathbb{R}^1$
+                \begin{equation*}
+                    J_{F}(x^{(k)})^{-1} = F'(x^{(k)})
+                \end{equation*}
+                \begin{align*}
+                    \Rightarrow s^{(k)} = - \frac{F(x^{(k)})}{F'(x^{(k)})} &&
+                    x^{(k+1)} = x^{(k)} - \frac{F(x^{(k)})}{F'(x^{(k)})}
+                \end{align*}
+%            \stepcounter{subsubsection}
+%            \subsubsection{globales Newton-Verfahrens}
+%                \textbf{Schrittweitenwahl nach Armijo}:\\
+%                sei $\delta \in ]0, \frac{1}{2}[$ (z.B. $10^{-3}$) fest gegeben.
+%                Wähle das Größte $\sigma_k \in \{1, \frac{1}{2}, \frac{1}{4}, \dots\}$ mit
+%                \begin{equation*}
+%                    ||F(x^{(k)} + \sigma_k s^{(k)})||_2^2 \leq ||F(x^{(k)})||_2^2-2\delta \sigma_k ||F(x^{(k)})||_2^2
+%                \end{equation*}
+%                \begin{satz}
+%                    Algo für das Globalisierte Newton-Verfahren:
+%                    \begin{enumerate}
+%                        \item Falls $F(x^{(k)}) = 0$ STOPP mit Ergebnis $x^{(k)}$
+%                        \item Berechne $s^{(k)}$
+%                        \item Bestimme $\sigma_k$ nach Armijo
+%                        \item $x_{k+1} = x^{(k)} + \sigma_ks^{(k)}$
+%                    \end{enumerate}
+%                \end{satz}
+    \newpage
     \section{Verfahren zur Eigenwert- und Eigenvektorberechnung}
         \stepcounter{subsection}
         \subsection{Vektoriteration}

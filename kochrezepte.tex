@@ -219,7 +219,82 @@ marginpar=false
 %            \end{satz}
 
     \newpage
-    \section{Numerische Integration / Newton-Cotes}
+    \section{Numerische Integration}
+        $a$, $b$ sind Start- und Endpunkt.
+        $h$ ist die Schrittweite.
+        $n$ sind die Stützstellen.
+        \begin{equation*}
+            \left\| f(\xi)\right\| = \max_{x \in [a,b] } | f(x)|
+        \end{equation*}
+        \subsection{Newton-Cotes}
+            \textbf{Allgemeiner Fehler}
+            \begin{equation*}
+                \int_a^b \left\| f(x)  - p_n(x) \right\| dx \leq \dfrac{\left\| f^{(n+1)}(\xi)\right\|}{(n+1)!}(b-a)^{n+2}
+                = \max_{x \in [a,b] } \dfrac{ | f^{(n+1)}(x)| }{(n+1)!}(b-a)^{n+2}
+            \end{equation*}
+            \subsubsection{geschlossen}
+                \begin{align*}
+                    x_i &= a+ih &  i&=0,\dots,n, &  h&=\frac{b-a}{n}
+                \end{align*}
+                \begin{equation*}
+                    \begin{array}{c c c c c c c c c}
+                        \hline\\[-.5\normalbaselineskip]
+                        n & h & \multicolumn{5}{c}{\alpha_{i,n}}& E_n(f) & \text{Name}\\
+                        \hline\\
+                        1 & b-a & \frac{1}{2} & \frac{1}{2} & & & & \frac{-f^{(2)}(\xi)}{12}h^3 & \text{Trapezregel}\\
+                        2 & \frac{b-a}{2} & \frac{1}{3} & \frac{4}{3} & \frac{1}{3} & & & \frac{-f^{(4)}(\xi)}{90}h^5 & \text{Simpson-Regel}\\
+                        3 & \frac{b-a}{3} & \frac{3}{8} & \frac{9}{8} & \frac{9}{8} & \frac{3}{8} & & \frac{-3f^{(4)}(\xi)}{80}h^5 & \text{3/8-Regel}\\
+                        4 & \frac{b-a}{4} & \frac{14}{45} & \frac{64}{45} & \frac{24}{45} & \frac{64}{45} & \frac{14}{45} & \frac{-8f^{(6)}(\xi)}{945}h^7 & \text{Milne-Regel}\\
+                    \end{array}
+                \end{equation*}
+                \begin{equation*}
+                    I_n(f) = h \sum^n_{i=0} \alpha_{i,n} f(x_i)
+                \end{equation*}
+            \subsubsection{offen}
+                \begin{align*}
+                    x_i &= a+ih &  i&=1,\dots,n+1, &  h&=\frac{b-a}{n+2}
+                \end{align*}
+                \begin{equation*}
+                    \begin{array}{c c c c c c c}
+                        \hline\\[-.5\normalbaselineskip]
+                        n & h & \multicolumn{3}{c}{\tilde{\alpha}_{i,n}}& \tilde{E}_n (f) & \text{Name}\\
+                        \hline\\
+                        0 & \frac{b-a}{2} & 2 & & & \frac{f^{(2)}(\xi)}{3}h^3 & \text{Rechteckregel}\\
+                        1 & \frac{b-a}{3} & \frac{3}{2} & \frac{3}{2} & & \frac{3f^{(2)}(\xi)}{4}h^3 & \text{Rechteckregel}\\
+                        2 & \frac{b-a}{4} & \frac{8}{3} & -\frac{4}{3} & \frac{8}{3} & \frac{28f^{(4)}(\xi)}{90}h^5 & \text{Rechteckregel}\\
+                    \end{array}
+                \end{equation*}
+                \begin{equation*}
+                    \tilde{I}_n(f) = h \sum^{n+1}_{i=1} \tilde{\alpha}_{i,n} f(x_i)
+                \end{equation*}
+        \subsection{summiert}
+            Aufteilen in Teilintervalle $m$
+            \begin{align*}
+                N &= n \cdot m & H&= \dfrac{b-a}{m} & h&= \dfrac{b-a}{N}\\
+                x_i &=  a + ih & i&= 0,\dots, N
+            \end{align*}
+
+            \textbf{Summierte Trapezregel}\\
+            (geschlossen, $n=1$, $h  = \frac{b-a}{m}$)
+            \begin{equation*}
+                S^{(1)}_N(f) = \dfrac{h}{2} \sum_{j=0}^{m-1}(f(x_j) + f(x_{j+1}))
+            \end{equation*}
+            Fehler: $R^{(1)}_N(f)=-\dfrac{f''(\xi)}{12}(b-a)h^2$\\[2ex]
+
+
+            \textbf{Summierte Simpson-Regel}\\
+            (geschlossen, $n = 2$, $h=\frac{b-a}{2m}$)
+            \begin{equation*}
+                S^{(2)}_N(f)=\dfrac{h}{3}\sum^{m-1}_{j=0}(f(x_{2j}) + 4f(x_{2j+1}) + f(x_{2j+2}))
+            \end{equation*}
+            Fehler: $R^{(2)}_N(f)=-\frac{f^{(4)}(\xi)}{180}(b-a)h^4$\\[2ex]
+
+            \textbf{Summierte Rechteck-Regel}\\
+            (offen, $n=0$, $2m = N$, $h = \frac{b-a}{N}$)
+            \begin{equation*}
+                \tilde{S}_N^{(0)} = 2h \sum^m_{j=1} f(x_{2j-1})
+            \end{equation*}
+            Fehler: $\tilde{R}^{(0)}_N(f)= \frac{f''(\xi)}{6}(b-a)h^2$
 
     \newpage
     \stepcounter{section}

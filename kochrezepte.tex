@@ -527,4 +527,61 @@ marginpar=false
                 c) $T<\chi^2_{n-1;\alpha}$
             \end{enumerate}
 
+        \begin{center}
+            {\makegapedcells\begin{tabular}{ l@{\hspace{0}}|c|c| }
+                \multicolumn{1}{l}{1.} & \multicolumn{2}{l}{ $X_1,\dots,X_n$ unabhängig, identisch $N(\mu, \sigma^2)$-verteilt }\\
+%                \hline
+                \hline
+                \multicolumn{3}{|l|}{testen für $\mu$}\\
+                \hline
+                \multicolumn{1}{l}{2.} & \multicolumn{2}{c}{ a) $H_0: \mu = \mu_0$ , b) $H_0: \mu \leq \mu_0$ , c) $H_0: \mu \geq \mu_0$ }\\
+                \cline{2-3}
+                &
+                bei bekannter Varianz $\sigma^2 = \sigma_0^2$ \quad\Rightarrow\quad Gauß-Test
+                &
+                bei unbekannter Varianz $\sigma^2$ \quad\Rightarrow\quad t-Test\\
+                \cline{2-3}
+                \multicolumn{1}{l}{3.} &
+                \multicolumn{2}{l}{ Testgröße $T(X_1,\dots,X_n)=$ }\\
+                \cline{2-3}
+                &
+                $\dfrac{\sqrt{n}}{\sigma_0}(\bar{X}_{(n)}-\mu_0)$
+                &
+                $\sqrt{n}\dfrac{\bar{X}_{(n)}-\mu_0}{\sqrt{S_{(n)}^2}}$\\
+                \cline{2-3}
+                \multicolumn{1}{l}{4.} &
+                \multicolumn{2}{l}{ Ablehnung Falls }\\
+                \cline{2-3}
+                &
+                a) $|T| > u_{1-\alpha/2}$, b) $T > u_{1-\alpha}$, c) $T < u_{\alpha}$
+                &
+                a) $|T| > t_{n-1;1-\alpha/2}$, b) $T > t_{n-1;1-\alpha}$, c) $T < t_{n-1;\alpha}$\\
+                \cline{2-3}
+                \noalign{\smallskip}
+                \hline
+                \multicolumn{3}{|l|}{ testen für $\sigma^2$ \qquad bei unbekanntem Erwartungswert $\mu$ \quad\Rightarrow\quad $\chi^2$-Streuungstest }\\
+                \hline
+                \multicolumn{1}{l}{2.} & \multicolumn{2}{l}{ a) $H_0: \sigma^2 = \sigma^2_0$, b) $H_0: \sigma^2 \leq \sigma^2_0$, c) $H_0: \sigma^2 \geq \sigma^2_0$
+                }\\
+                \multicolumn{1}{l}{3.} &
+                \multicolumn{2}{l}{ Testgröße $T(X_1,\dots,X_n)=$ }\\
+                \cline{2-3}
+                &
+                $\dfrac{(n-1)}{\sigma^2_0}S^2_{(n)}$
+                &
+                \\
+                \cline{2-3}
+                \multicolumn{1}{l}{4.} &
+                \multicolumn{2}{l}{ Ablehnung Falls }\\
+                \cline{2-3}
+                &
+                a) $T<\chi^2_{n-1;\alpha/2}$ oder $T>\chi^2_{n-1;1-\alpha/2}$,
+                b) $T>\chi^2_{n-1;1-\alpha}$,
+                c) $T<\chi^2_{n-1;\alpha}$
+                &
+                \\
+                \cline{2-3}
+            \end{tabular}\label{tab:Testauswahl}}
+        \end{center}
+
 \end{document}

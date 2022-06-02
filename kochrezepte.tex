@@ -486,10 +486,15 @@ marginpar=false
         \begin{enumerate}
             \item $X_1,\dots,X_n$ unabhängig, identisch $N(\mu, \sigma^2)$-verteilt
         \end{enumerate}
-        \subsubsection*{Gauß-Test , testen für $\mu$ bei bekannter Varianz $\sigma^2 = \sigma_0^2$}
+        \subsection*{testen für $\mu$}
             \begin{enumerate}
                 \stepcounter{enumi}
                 \item a) $H_0: \mu = \mu_0$, b) $H_0: \mu \leq \mu_0$, c) $H_0: \mu \geq \mu_0$
+            \end{enumerate}
+        \subsubsection*{bei bekannter Varianz $\sigma^2 = \sigma_0^2$ \quad\Rightarrow\quad Gauß-Test}
+            \begin{enumerate}
+                \stepcounter{enumi}
+                \stepcounter{enumi}
                 \item Testgröße
                 \begin{equation*}
                     T(X_1,\dots,X_n)=\dfrac{\sqrt{n}}{\sigma_0}(\bar{X}_{(n)}-\mu_0)
@@ -497,10 +502,10 @@ marginpar=false
                 \item Ablehnung Falls\\
                 a) $|T| > u_{1-\alpha/2}$, b) $T > u_{1-\alpha}$, c) $T < u_{\alpha}$
             \end{enumerate}
-        \subsubsection*{t-Test , testen für $\mu$ bei unbekannter Varianz $\sigma^2$}
+        \subsubsection*{bei unbekannter Varianz $\sigma^2$ \quad\Rightarrow\quad t-Test}
             \begin{enumerate}
                 \stepcounter{enumi}
-                \item a) $H_0: \mu = \mu_0$, b) $H_0: \mu \leq \mu_0$, c) $H_0: \mu \geq \mu_0$
+                \stepcounter{enumi}
                 \item Testgröße
                 \begin{equation*}
                     T(X_1,\dots,X_n)=\sqrt{n}\dfrac{\bar{X}_{(n)}-\mu_0}{\sqrt{S_{(n)}^2}}
@@ -508,7 +513,7 @@ marginpar=false
                 \item Ablehnung Falls\\
                 a) $|T| > t_{n-1;1-\alpha/2}$, b) $T > t_{n-1;1-\alpha}$, c) $T < t_{n-1;\alpha}$
             \end{enumerate}
-        \subsubsection*{$\chi^2$-Streuungstest , testen für $\sigma^2$ bei unbekanntem Erwartungswert $\mu$}
+        \subsection*{testen für $\sigma^2$ bei unbekanntem Erwartungswert $\mu$ \quad\Rightarrow\quad $\chi^2$-Streuungstest}
             \begin{enumerate}
                 \stepcounter{enumi}
                 \item a) $H_0: \sigma^2 = \sigma^2_0$, b) $H_0: \sigma^2 \leq \sigma^2_0$, c) $H_0: \sigma^2 \geq \sigma^2_0$

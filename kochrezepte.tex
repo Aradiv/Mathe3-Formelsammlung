@@ -295,10 +295,10 @@ marginpar=false
                 \dfrac{||\tilde{x} - x||}{||x||} \leq \dfrac{cond(A)}{1-cond(A)||\Delta A|| / ||A||} \left(\dfrac{||\Delta A||}{||A||} + \dfrac{|| \Delta b||}{||b||}\right)
             \end{equation*}
             mit
-            \begin{align*} %TODO convert to table or something
+            \begin{align*}
                 ||x||_2 &= \sqrt{x^Tx} & \text{induziert} &&||A||_2 &= \sqrt{\lambda_{max}(A^TA)}\\
-                ||x||_1 &= \sum^n_{i=1}|x_i| & \text{induziert} && ||A||_1 &= \max_{j=1,\dots,n} \sum^n_{i=1} |a_{ij}| & \text{(Spaltensummen Norm = ``größte'' Spalte)}\\
-                ||x||_\infty &= \max_{i=1,\dots,n}|x_i| & \text{induziert} && ||A||_\infty &= \max_{i=1,\dots,n} \sum^n_{j=1} |a_{ij}| & \text{(Zeilensummen Norm = ``größte'' Zeile)}\\
+                ||x||_1 &= \sum^n_{i=1}|x_i| & \text{induziert} && ||A||_1 &= \max_{j=1,\dots,n} \sum^n_{i=1} |a_{ij}| \tag*{(Spaltensummen Norm = ``größte'' Spalte)}\\
+                ||x||_\infty &= \max_{i=1,\dots,n}|x_i| & \text{induziert} && ||A||_\infty &= \max_{i=1,\dots,n} \sum^n_{j=1} |a_{ij}| \tag*{(Zeilensummen Norm = ``größte'' Zeile)}\\
             \end{align*}
             \begin{equation*}
                 cond(A) = ||A||\mbox{ }||A^{-1}||

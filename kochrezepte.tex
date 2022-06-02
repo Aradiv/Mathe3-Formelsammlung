@@ -116,107 +116,79 @@ marginpar=false
                 \max_{x \in [a,b]} |f(x) - p_n(x)| \leq \max_{x \in [a,b]} \dfrac{|f^{(n+1)}(x)|}{(n+1)!}\left(\dfrac{b-a}{2}\right)^{n+1}2^{-n}
             \end{equation*}
 
-        %TODO \subsection{Spline-Interpolation}
-%            \begin{definition}
-%                Eine Splinefunktion der Ordnung $k$ zur Zerlegung $\Delta$ ist eine Funktion $s:[a,b]\rightarrow \mathbb{R}$ mit folgenden Eigenschaften:
-%                \begin{itemize}
-%                    \item es gilt $s \in C^{k-1}([a,b])$ (stetig diffbar)
-%                    \item s stimmt auf jedem Intervall $[x_i,x_{i+1}]$
-%                \end{itemize}
-%                \textbf{Spline-Interpolation}: \\
-%                Zu einer Zerlegung $\Delta = \{x_i:a = x_0 < x_1 < \dots < x_n = b\}$ und werten $y_i \in \mathbb{R}, i = 0, \dots, n$
-%                bestimme $s \in S_{\Delta,k}$ mit
-%                \begin{equation*}
-%                    s(x_i) = y_i, i=0,...,n
-%                \end{equation*}
-%            \end{definition}
-%            \subsubsection{Linear}
-%            \begin{equation*}
-%                s(x) = s_i(x) = \dfrac{x_{i+1} - x}{x_{i+1} - x_i} y_i + \dfrac{x - x_{i}}{x_{i+1} - x_i} y_{i+1} \mbox{ }\forall x \in [x_i, x_{i+1}]
-%            \end{equation*}
-%            mit Hilfsknoten $x_{-1} < a $ und $ x_{n+1} > b$ gilt dann
-%            \begin{align*}
-%                \varphi_i(x) =
-%                \begin{cases}
-%                    0 & \mbox{falls} x \leq x_{i-1}\\
-%                    \dfrac{x - x_{i-1}}{x_{i} - x_{i-1}}& \mbox{falls} x \in [x_{i-1}, x_i]\\
-%                    \dfrac{x_{i+1} - x}{x_{i+1} - x_i}& \mbox{falls} x \in [x_{i}, x_{i+1}]\\
-%                    0 & \mbox{falls} x > x_{i+1}
-%                \end{cases} \\
-%                s(x) = \sum_{i=0}^n y_i \varphi_i(x), x \in [a,b]
-%            \end{align*}
-%            \begin{satz}
-%                Zu einer Zerlegung $\Delta = \{x_i:a = x_0 < x_1 < \dots < x_n = b\}$ von $[a,b]$ und Werten $y_i$ existiert genau ein interpolierender Spline
-%            \end{satz}
-%            \begin{satz}
-%                \begin{equation*}
-%                    \max_{x \in [a,b]} |f(x) - s(x)| \leq \dfrac{1}{8} \max_{x \in [a,b]} | f''(x)| h_{\mbox{max}}^2
-%                \end{equation*}
-%            \end{satz}
-%            \subsubsection{Kubisch}
-%            \begin{equation*}
-%                s_i(x) = \dfrac{1}{6} \left(
-%                \dfrac{(x_{i+1} - x)^3}{x_{i+1} - x_i}M_i +
-%                \dfrac{(x - x_{i})^3}{x_{i+1} - x_i}M_{i+1}
-%                \right)
-%                + c_i (x-x_i) + d_i
-%            \end{equation*}
-%            mit $h_i = x_{i+1} - x_i$
-%            \begin{equation*}
-%                \begin{matrix}
-%                    d_i = y_i - \dfrac{h_i^2}{6}M_i & c_i = \dfrac{y_{i+1} - y_i}{h_i}- \dfrac{h_i}{6}(M_{i+1} - M_i)
-%                \end{matrix}
-%            \end{equation*}
-%            \textbf{Natürliche Randbedingungen}:\\
-%            \begin{equation*}
-%                \begin{matrix}
-%                    M_0 = M_n = 0 & b_0 = b_n = 0\\
-%                    \lambda_0 = \lambda_n = 0 & \mu_0 = \mu_n = 1\\
-%                \end{matrix}
-%            \end{equation*}
-%            \textbf{Hermite Randbedingungen}:\\
-%            \begin{equation*}
-%                \begin{matrix}
-%                    b_0 = \dfrac{y_1-y_0}{h_0} - f'(a) & b_n = f'(b) - \dfrac{y_n - y_{n-1}}{h_{n-1}} & & \\
-%                    \lambda_0 =\dfrac{h_0}{6} & \mu_0 = \dfrac{h_0}{3} & \lambda_n = \dfrac{h_{n-1}}{6} & \mu_n = \dfrac{h_{n-1}}{3}\\
-%                \end{matrix}
-%            \end{equation*}
-%            \begin{equation*}
-%                \begin{pmatrix}
-%                    \mu_0 & \lambda_0 \\
-%                    \frac{h_0}{6} & \frac{h_0 + h_1}{3} & \frac{h_1}{6}\\
-%                    & \frac{h_1}{6} & \frac{h_1 + h_2}{3} & \frac{h_2}{6}\\
-%                    & & \dots & \dots & \dots \\
-%                    & &  & \lambda_n & \mu_n\\
-%                \end{pmatrix}
-%                \begin{pmatrix}
-%                    M_0\\
-%                    M_1\\
-%                    M_2\\
-%                    \dots\\
-%                    M_n
-%                \end{pmatrix}
-%                =\begin{pmatrix}
-%                     b_0\\
-%                     \frac{y_2 - y_1}{h_1} - \frac{y_1-y_0}{h_0}\\
-%                     \frac{y_3 - y_2}{h_2} - \frac{y_2-y_1}{h_1}\\
-%                     \dots\\
-%                     b_n
-%                \end{pmatrix}
-%            \end{equation*}
-%            \setcounter{satz}{5}
-%            \begin{satz}{Fehler Natürlich}
-%                \begin{align*}
-%                    |f(x) - s(x)| \leq \dfrac{h_{max}}{h_{min}} \sup_{\xi\in [a,b]} |f^{(4)}(\xi)| h^4_{max}\\
-%                    |f^{(k)}(x) - s^{(k)}(x)| \leq \dfrac{2h_{max}}{h_{min}} \sup_{\xi\in [a,b]} |f^{(4)}(\xi)| h^{4-k}_{max}
-%                \end{align*}
-%            \end{satz}
-%            \begin{satz}{Fehler Hermit}
-%                \begin{align*}
-%                    |f(x) - s(x)| \leq \dfrac{5}{384} \sup_{\xi\in [a,b]} |f^{(4)}(\xi)| h^4_{max}\\
-%                    |f^{(k)}(x) - s^{(k)}(x)| \leq \dfrac{2h_{max}}{h_{min}} \sup_{\xi\in [a,b]} |f^{(4)}(\xi)| h^{4-k}_{max}
-%                \end{align*}
-%            \end{satz}
+    \newpage
+    \subsection{Spline-Interpolation}
+        \subsubsection{Linear}
+            \begin{equation*}
+                s_i(x) = \dfrac{x_{i+1} - x}{x_{i+1} - x_i} y_i + \dfrac{x - x_{i}}{x_{i+1} - x_i} y_{i+1} \quad \forall x \in [x_i, x_{i+1}]
+            \end{equation*}\\
+            \textbf{Fehlerabschätzung:}\\
+            \begin{equation*}
+                \max_{x \in [a,b]} |f(x) - s(x)| \leq \dfrac{1}{8} \max_{x \in [a,b]} | f''(x)| h_{\max}^2
+                \tag*{$, h_{\max} = \underset{i=0,\dots,n−1}{\max} x_{i+1} - x_{i}$}
+            \end{equation*}
+            \subsubsection{Kubisch}
+            Natürliche Randbedingungen:\\
+            \begin{equation*}
+                \begin{matrix}
+                    M_0 = M_n = 0 & b_0 = b_n = 0\\
+                    \lambda_0 = \lambda_n = 0 & \mu_0 = \mu_n = 1\\
+                \end{matrix}
+            \end{equation*}
+            Hermite Randbedingungen:\\
+            \begin{equation*}
+                \begin{matrix}
+                    b_0 = \dfrac{y_1-y_0}{h_0} - f'(a) & b_n = f'(b) - \dfrac{y_n - y_{n-1}}{h_{n-1}} \\
+                    \lambda_0 =\dfrac{h_0}{6}  \quad \mu_0 = \dfrac{h_0}{3} & \lambda_n = \dfrac{h_{n-1}}{6} \quad \mu_n = \dfrac{h_{n-1}}{3}\\
+                \end{matrix}
+            \end{equation*}
+            \begin{equation*}
+                \begin{pmatrix}
+                    \mu_0 & \lambda_0 \\
+                    \frac{h_0}{6} & \frac{h_0 + h_1}{3} & \frac{h_1}{6}\\
+                    & \frac{h_1}{6} & \frac{h_1 + h_2}{3} & \frac{h_2}{6}\\
+                    & & \dots & \dots & \dots \\
+                    & &  & \lambda_n & \mu_n\\
+                \end{pmatrix}
+                \begin{pmatrix}
+                    M_0\\
+                    M_1\\
+                    M_2\\
+                    \dots\\
+                    M_n
+                \end{pmatrix}
+                =\begin{pmatrix}
+                     b_0\\
+                     \frac{y_2 - y_1}{h_1} - \frac{y_1-y_0}{h_0}\\
+                     \frac{y_3 - y_2}{h_2} - \frac{y_2-y_1}{h_1}\\
+                     \dots\\
+                     b_n
+                \end{pmatrix}
+            \end{equation*}
+            \textbf{Berechnung:}
+            \begin{equation*}
+                \begin{matrix}
+                    d_i = y_i - \dfrac{h_i^2}{6}M_i & c_i = \dfrac{y_{i+1} - y_i}{h_i}- \dfrac{h_i}{6}(M_{i+1} - M_i) \tag*{mit $h_i = x_{i+1} - x_i$}
+                \end{matrix}
+            \end{equation*}
+            \begin{equation*}
+                s_i(x) = \dfrac{1}{6}
+                \left(
+                \dfrac{(x_{i+1} - x)^3}{x_{i+1} - x_i}M_i +
+                \dfrac{(x - x_{i})^3}{x_{i+1} - x_i}M_{i+1}
+                \right)
+                + c_i (x-x_i) + d_i
+            \end{equation*}
+            Fehler Natürlich:
+                \begin{align*}
+                    |f(x) - s(x)| \leq \dfrac{h_{max}}{h_{min}} \sup_{\xi\in [a,b]} |f^{(4)}(\xi)| h^4_{max}\\
+                    |f^{(k)}(x) - s^{(k)}(x)| \leq \dfrac{2*h_{max}}{h_{min}} \sup_{\xi\in [a,b]} |f^{(4)}(\xi)| h^{4-k}_{max}
+                \end{align*}
+            Fehler Hermit:
+                \begin{align*}
+                    |f(x) - s(x)| \leq \dfrac{5}{384} \sup_{\xi\in [a,b]} |f^{(4)}(\xi)| h^4_{max}\\
+                    |f^{(k)}(x) - s^{(k)}(x)| \leq \dfrac{2*h_{max}}{h_{min}} \sup_{\xi\in [a,b]} |f^{(4)}(\xi)| h^{4-k}_{max}
+                \end{align*}
 
     \newpage
     \section{Numerische Integration}

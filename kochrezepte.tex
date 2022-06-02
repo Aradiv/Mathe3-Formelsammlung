@@ -56,6 +56,9 @@ marginpar=false
 %\usepackage{enumitem}
 %\usepackage{mathtools}
 %\usepackage{mathrsfs}
+\usepackage{makecell}
+\setcellgapes{4pt}
+\usepackage{multirow}
 
 % Document
 \begin{document}
@@ -421,47 +424,62 @@ marginpar=false
                 \frac{\partial^2}{\partial \theta^2} ln\left( L(\theta; x_1, \dots x_n) \right) \overset{!}{<} 0
             \end{equation*}
         \subsection{Konfidenzintervalle}
-        %TODO add decision tree and maybe tests into table to compact them
             \begin{align*}
                 F_\theta(x) &= F_{(\mu, \sigma^2)}(x)= \Phi(\dfrac{x-\mu}{\sigma}) &
                 \bar{X}_{(n)}&=\dfrac{1}{n}\sum_{i=1}^n X_i &
                 S^2_{(n)} &= \dfrac{1}{n-1}\sum_{i=1}^n (X_i - \bar{X}_{(n)})^2
             \end{align*}
             $\Theta = \{(\mu, \sigma^2_0):\mu \in \mathbb{R},\sigma^2 > 0\}$ und $\tau(\theta) = \mu/\sigma^2$.
-            Das Konfidenzintervall für $\mu/\sigma^2$ zum Niveau $1-\alpha$ lautet
-            \subsubsection*{Konfidenzintervall für $\mu$ bei bekannter Varianz $\sigma^2 = \sigma_0^2$}
+            \subsubsection*{Das Konfidenzintervall $I$ zum Niveau $1-\alpha$ lautet:}
             \begin{equation*}
-                I(X_1,\dots,X_n)=\left[
-                \bar{X}_{(n)}-u_{1-\alpha/2}\dfrac{\sigma_0}{\sqrt{n}}
-                ,
-                \bar{X}_{(n)}+u_{1-\alpha/2}\dfrac{\sigma_0}{\sqrt{n}}
-                \right]
+                I(X_1,\dots,X_n)=
             \end{equation*}
+            \begin{center}
+                {\makegapedcells\begin{tabular}{|l|l|l|}
+                    \hline
+                    \multirow{2}{*}[-3.5ex]{für $\mu$}& bei bekannter Varianz $\sigma^2 = \sigma_0^2$ & bei unbekannter Varianz $\sigma^2$\\
+                    \cline{2-3}
+                    &
+                    \begin{equation*}
+                        \left[
+                        \bar{X}_{(n)}-u_{1-\alpha/2}\dfrac{\sigma_0}{\sqrt{n}}
+                        \ ,\
+                        \bar{X}_{(n)}+u_{1-\alpha/2}\dfrac{\sigma_0}{\sqrt{n}}
+                        \right]
+                    \end{equation*}
+                    &
+                    \begin{equation*}
+                        \left[
+                        \bar{X}_{(n)}-t_{n-1;1-\alpha/2}\sqrt{\dfrac{S^2_{(n)}}{n}}
+                        \ ,\
+                        \bar{X}_{(n)}+t_{n-1;1-\alpha/2}\sqrt{\dfrac{S^2_{(n)}}{n}}
+                        \right]
+                    \end{equation*}
+                    \\
+                    \hline \noalign{\bigskip} \hline
+                    \multirow{2}{*}[-3ex]{für $\sigma^2$} & bei bekanntem Erwartungswert $\mu = \mu_0$ & bei unbekanntem Erwartungswert $\mu$\\
+                    \cline{2-3}
+                    &
+                    \begin{equation*}
+                        \left[
+                        \dfrac{\Sigma_{i=1}^n (X_i-\mu_0)^2}{\chi^2_{n;1-\alpha/2}}
+                        \ ,\
+                        \dfrac{\Sigma_{i=1}^n (X_i-\mu_0)^2}{\chi^2_{n;\alpha/2}}
+                        \right]
+                    \end{equation*}
+                    &
+                    \begin{equation*}
+                        \left[
+                        \dfrac{(n-1)S^2_{(n)}}{\chi^2_{n-1;1-\alpha/2}}
+                        \ ,\
+                        \dfrac{(n-1)S^2_{(n)}}{\chi^2_{n-1;\alpha/2}}
+                        \right]
+                    \end{equation*}
+                    \\
+                    \hline
+                \end{tabular}\label{tab:Konfidenzintervallberechnung}}
+            \end{center}
 
-            \subsubsection*{Konfidenzintervall für $\mu$ bei unbekannter Varianz $\sigma^2$}
-            \begin{equation*}
-                I(X_1,\dots,X_n)=\left[
-                \bar{X}_{(n)}-t_{n-1;1-\alpha/2}\sqrt{\dfrac{S^2_{(n)}}{n}}
-                ,
-                \bar{X}_{(n)}+t_{n-1;1-\alpha/2}\sqrt{\dfrac{S^2_{(n)}}{n}}
-                \right]
-            \end{equation*}
-            \subsubsection*{Konfidenzintervall für $\sigma^2$ bei bekanntem Erwartungswert $\mu = \mu_0$}
-            \begin{equation*}
-                I(X_1,\dots,X_n)=\left[
-                \dfrac{\Sigma_{i=1}^n (X_i-\mu_0)^2}{\chi^2_{n;1-\alpha/2}}
-                ,
-                \dfrac{\Sigma_{i=1}^n (X_i-\mu_0)^2}{\chi^2_{n;\alpha/2}}
-                \right]
-            \end{equation*}
-            \subsubsection*{Konfidenzintervall für $\sigma^2$ bei unbekanntem Erwartungswert $\mu$}
-            \begin{equation*}
-                I(X_1,\dots,X_n)=\left[
-                \dfrac{(n-1)S^2_{(n)}}{\chi^2_{n-1;1-\alpha/2}}
-                ,
-                \dfrac{(n-1)S^2_{(n)}}{\chi^2_{n-1;\alpha/2}}
-                \right]
-            \end{equation*}
     \newpage
     \section{Tests}
     %TODO add decision tree and maybe tests into table to compact them

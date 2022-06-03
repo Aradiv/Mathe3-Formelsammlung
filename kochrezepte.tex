@@ -59,6 +59,7 @@ marginpar=false
 \usepackage{makecell}
 \setcellgapes{4pt}
 \usepackage{multirow}
+\usepackage{rotating}
 
 % Document
 \begin{document}
@@ -482,106 +483,69 @@ marginpar=false
 
     \newpage
     \section{Tests}
-    %TODO add decision tree and maybe tests into table to compact them
-        \begin{enumerate}
-            \item $X_1,\dots,X_n$ unabhängig, identisch $N(\mu, \sigma^2)$-verteilt
-        \end{enumerate}
-        \subsection*{testen für $\mu$}
-            \begin{enumerate}
-                \stepcounter{enumi}
-                \item a) $H_0: \mu = \mu_0$, b) $H_0: \mu \leq \mu_0$, c) $H_0: \mu \geq \mu_0$
-            \end{enumerate}
-        \subsubsection*{bei bekannter Varianz $\sigma^2 = \sigma_0^2$ \quad\Rightarrow\quad Gauß-Test}
-            \begin{enumerate}
-                \stepcounter{enumi}
-                \stepcounter{enumi}
-                \item Testgröße
-                \begin{equation*}
-                    T(X_1,\dots,X_n)=\dfrac{\sqrt{n}}{\sigma_0}(\bar{X}_{(n)}-\mu_0)
-                \end{equation*}
-                \item Ablehnung Falls\\
-                a) $|T| > u_{1-\alpha/2}$, b) $T > u_{1-\alpha}$, c) $T < u_{\alpha}$
-            \end{enumerate}
-        \subsubsection*{bei unbekannter Varianz $\sigma^2$ \quad\Rightarrow\quad t-Test}
-            \begin{enumerate}
-                \stepcounter{enumi}
-                \stepcounter{enumi}
-                \item Testgröße
-                \begin{equation*}
-                    T(X_1,\dots,X_n)=\sqrt{n}\dfrac{\bar{X}_{(n)}-\mu_0}{\sqrt{S_{(n)}^2}}
-                \end{equation*}
-                \item Ablehnung Falls\\
-                a) $|T| > t_{n-1;1-\alpha/2}$, b) $T > t_{n-1;1-\alpha}$, c) $T < t_{n-1;\alpha}$
-            \end{enumerate}
-        \subsection*{testen für $\sigma^2$ bei unbekanntem Erwartungswert $\mu$ \quad\Rightarrow\quad $\chi^2$-Streuungstest}
-            \begin{enumerate}
-                \stepcounter{enumi}
-                \item a) $H_0: \sigma^2 = \sigma^2_0$, b) $H_0: \sigma^2 \leq \sigma^2_0$, c) $H_0: \sigma^2 \geq \sigma^2_0$
-                \item Testgröße
-                \begin{equation*}
-                    T(X_1,\dots,X_n)=\dfrac{(n-1)}{\sigma^2_0}S^2_{(n)}
-                \end{equation*}
-                \item Ablehnung falls\\
-                a) $T<\chi^2_{n-1;\alpha/2}$ oder $T>\chi^2_{n-1;1-\alpha/2}$,
-                b) $T>\chi^2_{n-1;1-\alpha}$,
-                c) $T<\chi^2_{n-1;\alpha}$
-            \end{enumerate}
-
-        \begin{center}
-            {\makegapedcells\begin{tabular}{ l@{\hspace{0}}|c|c| }
-                \multicolumn{1}{l}{1.} & \multicolumn{2}{l}{ $X_1,\dots,X_n$ unabhängig, identisch $N(\mu, \sigma^2)$-verteilt }\\
-%                \hline
+%        \begin{center}
+            {\makegapedcells\begin{tabular}{ | l | r@{\hspace{0}} | c | c | }
+                \multicolumn{4}{l}{1. \quad $X_1,\dots,X_n$ unabhängig, identisch $N(\mu, \sigma^2)$-verteilt }\\
+                \noalign{\smallskip}
                 \hline
-                \multicolumn{3}{|l|}{testen für $\mu$}\\
-                \hline
-                \multicolumn{1}{l}{2.} & \multicolumn{2}{c}{ a) $H_0: \mu = \mu_0$ , b) $H_0: \mu \leq \mu_0$ , c) $H_0: \mu \geq \mu_0$ }\\
-                \cline{2-3}
-                &
-                bei bekannter Varianz $\sigma^2 = \sigma_0^2$ \quad\Rightarrow\quad Gauß-Test
-                &
-                bei unbekannter Varianz $\sigma^2$ \quad\Rightarrow\quad t-Test\\
-                \cline{2-3}
-                \multicolumn{1}{l}{3.} &
-                \multicolumn{2}{l}{ Testgröße $T(X_1,\dots,X_n)=$ }\\
-                \cline{2-3}
-                &
+                \multirow{6}{*}{\begin{sideways}testen für $\mu$\end{sideways}}&
+                \multicolumn{1}{r}{2.} & \multicolumn{2}{l|}{ a) $H_0: \mu = \mu_0$ , b) $H_0: \mu \leq \mu_0$ , c) $H_0: \mu \geq \mu_0$ }\\
+                \cline{3-4}
+                &&\multicolumn{1}{l|}{bei bekannter Varianz $\sigma^2 = \sigma_0^2$}
+                & \multicolumn{1}{l|}{bei unbekannter Varianz $\sigma^2$ }\\
+                &&\multicolumn{1}{l|}{\Rightarrow\quad Gauß-Test}
+                & \multicolumn{1}{l|}{\Rightarrow\quad t-Test}\\
+                \cline{3-4}
+                & &
+                \multicolumn{2}{l|}{3. \quad Testgröße $T(X_1,\dots,X_n)=$ }\\
+                \cline{3-4}
+                & &
                 $\dfrac{\sqrt{n}}{\sigma_0}(\bar{X}_{(n)}-\mu_0)$
                 &
                 $\sqrt{n}\dfrac{\bar{X}_{(n)}-\mu_0}{\sqrt{S_{(n)}^2}}$\\
-                \cline{2-3}
-                \multicolumn{1}{l}{4.} &
-                \multicolumn{2}{l}{ Ablehnung Falls }\\
-                \cline{2-3}
-                &
-                a) $|T| > u_{1-\alpha/2}$, b) $T > u_{1-\alpha}$, c) $T < u_{\alpha}$
-                &
-                a) $|T| > t_{n-1;1-\alpha/2}$, b) $T > t_{n-1;1-\alpha}$, c) $T < t_{n-1;\alpha}$\\
-                \cline{2-3}
-                \noalign{\smallskip}
+                \cline{3-4}
+                & &
+                \multicolumn{2}{l|}{4. \quad Ablehnung Falls }\\
+                \cline{3-4}
+                &&\shortstack[l]{
+                    a) $|T| > u_{1-\alpha/2}$ \\
+                    b) \; $T > u_{1-\alpha}$ \\
+                    c) \,\, $T < u_{\alpha}$}
+                 &\shortstack[l]{
+                    a) $|T| > t_{n-1;1-\alpha/2}$  \\
+                    b) \; $T > t_{n-1;1-\alpha}$ \\
+                    c) \,\, $T < t_{n-1;\alpha}$}\\
                 \hline
-                \multicolumn{3}{|l|}{ testen für $\sigma^2$ \qquad bei unbekanntem Erwartungswert $\mu$ \quad\Rightarrow\quad $\chi^2$-Streuungstest }\\
+                \noalign{\medskip}
                 \hline
-                \multicolumn{1}{l}{2.} & \multicolumn{2}{l}{ a) $H_0: \sigma^2 = \sigma^2_0$, b) $H_0: \sigma^2 \leq \sigma^2_0$, c) $H_0: \sigma^2 \geq \sigma^2_0$
+                \multirow{6}{*}{\begin{sideways}testen für $\sigma^2$\end{sideways}}&
+                \multicolumn{1}{l}{2.} & \multicolumn{2}{l|}{ a) $H_0: \sigma^2 = \sigma^2_0$, b) $H_0: \sigma^2 \leq \sigma^2_0$, c) $H_0: \sigma^2 \geq \sigma^2_0$
                 }\\
-                \multicolumn{1}{l}{3.} &
-                \multicolumn{2}{l}{ Testgröße $T(X_1,\dots,X_n)=$ }\\
-                \cline{2-3}
-                &
+                \cline{3-4}
+                && \multicolumn{2}{l|}{ bei unbekanntem Erwartungswert $\mu$ \quad\Rightarrow\quad $\chi^2$-Streuungstest }\\
+                \cline{3-4}
+                & &
+                \multicolumn{2}{l|}{ 3. \quad Testgröße $T(X_1,\dots,X_n)=$ }\\
+                \cline{3-4}
+                && \multicolumn{2}{c|}{
                 $\dfrac{(n-1)}{\sigma^2_0}S^2_{(n)}$
-                &
+                }
                 \\
-                \cline{2-3}
-                \multicolumn{1}{l}{4.} &
-                \multicolumn{2}{l}{ Ablehnung Falls }\\
-                \cline{2-3}
-                &
-                a) $T<\chi^2_{n-1;\alpha/2}$ oder $T>\chi^2_{n-1;1-\alpha/2}$,
-                b) $T>\chi^2_{n-1;1-\alpha}$,
-                c) $T<\chi^2_{n-1;\alpha}$
-                &
+                \cline{3-4}
+                &&
+                \multicolumn{2}{l|}{ 4. \quad Ablehnung Falls }\\
+                \cline{3-4}
+                & &
+                \multicolumn{2}{c|}{
+                \shortstack[l]{
+                    a) $T<\chi^2_{n-1;\alpha/2}$ oder $T>\chi^2_{n-1;1-\alpha/2}$\\
+                    b) $T>\chi^2_{n-1;1-\alpha}$\\
+                    c) $T<\chi^2_{n-1;\alpha}$
+                }
+                }
                 \\
-                \cline{2-3}
+                \hline
             \end{tabular}\label{tab:Testauswahl}}
-        \end{center}
+%        \end{center}
 
 \end{document}

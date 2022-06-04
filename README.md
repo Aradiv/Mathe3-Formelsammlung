@@ -1,3 +1,4 @@
-Fork um Rechtschreibfehler zu fixen und um meine eigenen Sachen für mich zu ergänzen
+Skriptzusammenfassung / Formelsammlung für Mathe3Inf. / Mathe4Et. der TU Darmstadt.
+Angefertigt für SoSe21 + WiSe21/22.
 
-Zweite [PDF](kochrezepte.pdf) für Kochrezepte der größeren Aufgaben in der Klausur
+Zweite [PDF](kochrezepte.pdf) sind Kochrezepte von Aufgabentypen welche in der Klausur drankamen.

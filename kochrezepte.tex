@@ -488,24 +488,18 @@ marginpar=false
                 \multicolumn{4}{l}{1. \quad $X_1,\dots,X_n$ unabhängig, identisch $N(\mu, \sigma^2)$-verteilt }\\
                 \noalign{\smallskip}
                 \hline
-                \multirow{6}{*}{\begin{sideways}testen für $\mu$\end{sideways}}&
+                \multirow{7}{*}{\begin{sideways}testen für $\mu$\end{sideways}}&
                 \multicolumn{1}{r}{2.} & \multicolumn{2}{l|}{ a) $H_0: \mu = \mu_0$ , b) $H_0: \mu \leq \mu_0$ , c) $H_0: \mu \geq \mu_0$ }\\
                 \cline{3-4}
-                &&\multicolumn{1}{l|}{bei bekannter Varianz $\sigma^2 = \sigma_0^2$}
-                & \multicolumn{1}{l|}{bei unbekannter Varianz $\sigma^2$ }\\
-                &&\multicolumn{1}{l|}{\Rightarrow\quad Gauß-Test}
-                & \multicolumn{1}{l|}{\Rightarrow\quad t-Test}\\
+                &\multirow{6}{*}{}
+                & \multicolumn{1}{l|}{bei bekannter Varianz $\sigma^2 = \sigma_0^2$} & \multicolumn{1}{l|}{bei unbekannter Varianz $\sigma^2$ }\\
+                &&\multicolumn{1}{l|}{\Rightarrow\quad Gauß-Test} & \multicolumn{1}{l|}{\Rightarrow\quad t-Test}\\
                 \cline{3-4}
-                & &
-                \multicolumn{2}{l|}{3. \quad Testgröße $T(X_1,\dots,X_n)=$ }\\
+                &&\multicolumn{2}{l|}{3. \quad Testgröße $T(X_1,\dots,X_n)=$ }\\
                 \cline{3-4}
-                & &
-                $\dfrac{\sqrt{n}}{\sigma_0}(\bar{X}_{(n)}-\mu_0)$
-                &
-                $\sqrt{n}\dfrac{\bar{X}_{(n)}-\mu_0}{\sqrt{S_{(n)}^2}}$\\
+                && $\dfrac{\sqrt{n}}{\sigma_0}(\bar{X}_{(n)}-\mu_0)$ & $\sqrt{n}\dfrac{\bar{X}_{(n)}-\mu_0}{\sqrt{S_{(n)}^2}}$\\
                 \cline{3-4}
-                & &
-                \multicolumn{2}{l|}{4. \quad Ablehnung Falls }\\
+                &&\multicolumn{2}{l|}{4. \quad Ablehnung Falls }\\
                 \cline{3-4}
                 &&\shortstack[l]{
                     a) $|T| > u_{1-\alpha/2}$ \\
@@ -516,34 +510,28 @@ marginpar=false
                     b) \; $T > t_{n-1;1-\alpha}$ \\
                     c) \,\, $T < t_{n-1;\alpha}$}\\
                 \hline
-                \noalign{\medskip}
+            \noalign{\medskip}
                 \hline
                 \multirow{6}{*}{\begin{sideways}testen für $\sigma^2$\end{sideways}}&
                 \multicolumn{1}{l}{2.} & \multicolumn{2}{l|}{ a) $H_0: \sigma^2 = \sigma^2_0$, b) $H_0: \sigma^2 \leq \sigma^2_0$, c) $H_0: \sigma^2 \geq \sigma^2_0$
                 }\\
                 \cline{3-4}
-                && \multicolumn{2}{l|}{ bei unbekanntem Erwartungswert $\mu$ \quad\Rightarrow\quad $\chi^2$-Streuungstest }\\
+                &\multirow{5}{*}{}
+                & \multicolumn{2}{l|}{ bei unbekanntem Erwartungswert $\mu$ \quad\Rightarrow\quad $\chi^2$-Streuungstest }\\
                 \cline{3-4}
-                & &
-                \multicolumn{2}{l|}{ 3. \quad Testgröße $T(X_1,\dots,X_n)=$ }\\
+                &&\multicolumn{2}{l|}{ 3. \quad Testgröße $T(X_1,\dots,X_n)=$ }\\
                 \cline{3-4}
-                && \multicolumn{2}{c|}{
-                $\dfrac{(n-1)}{\sigma^2_0}S^2_{(n)}$
-                }
-                \\
+                &&\multicolumn{2}{c|}{ $\dfrac{(n-1)}{\sigma^2_0}S^2_{(n)}$ } \\
                 \cline{3-4}
-                &&
-                \multicolumn{2}{l|}{ 4. \quad Ablehnung Falls }\\
+                &&\multicolumn{2}{l|}{ 4. \quad Ablehnung Falls }\\
                 \cline{3-4}
                 & &
                 \multicolumn{2}{c|}{
-                \shortstack[l]{
+                    \shortstack[l]{
                     a) $T<\chi^2_{n-1;\alpha/2}$ oder $T>\chi^2_{n-1;1-\alpha/2}$\\
                     b) $T>\chi^2_{n-1;1-\alpha}$\\
-                    c) $T<\chi^2_{n-1;\alpha}$
-                }
-                }
-                \\
+                    c) $T<\chi^2_{n-1;\alpha}$}
+                } \\
                 \hline
             \end{tabular}\label{tab:Testauswahl}}
 %        \end{center}
